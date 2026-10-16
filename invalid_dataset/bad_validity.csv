@@ -1,0 +1,4 @@
+sku,provider,product_name,country_code,country_name,data_gb,data_display,validity_days,price,currency,network,top_up
+airalo-100001,Airalo,eSIM Espagne 3 Go 15 jours,ES,Espagne,3,3 Go,15,11.43,EUR,4G,non
+airalo-100002,Airalo,eSIM Nigeria 10 Go 7 jours,NG,Nigeria,10,10 Go,7,17.4,EUR,5G,oui
+airalo-999003,Airalo,eSIM Espagne 3 Go quinze jours,ES,Espagne,3,3 Go,quinze,11.43,EUR,4G,non
