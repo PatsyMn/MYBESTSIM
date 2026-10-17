@@ -26,5 +26,5 @@ if __name__ == "__main__":
     from read_data import load_all
     from stats import compute_stats
     esims = load_all('dataset')
-    path = write_dashboard(compute_stats(esims), 'output/dashboard.html')
+    path = write_dashboard(compute_stats(esims), 'docs/index.html')
     print("Dashboard written to", path)
