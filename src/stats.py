@@ -183,4 +183,3 @@ if __name__ == "__main__":
         print(f'   {c["country"]:20} {c["cards"]:3} cards, {c["providers"]:2} providers, '
               f'from {c["cheapest"]:6.2f} €, best {per_gb} €/GB, '
               f'{c["unlimited_cards"]:2} unlimited (from {unlimited})')
-# test
