@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>eSIM dashboard</title>
+<style>
+body { font-family: system-ui, sans-serif; margin: 24px; background: #f5f6f8; color: #1c2430; }
+h1 { margin-bottom: 4px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+         gap: 12px; margin: 20px 0; }
+.card { background: white; border-radius: 10px; padding: 16px; }
+.label { color: #5d6877; font-size: 0.9rem; }
+.value { font-size: 1.9rem; font-weight: bold; margin: 4px 0; }
+.detail { color: #5d6877; font-size: 0.85rem; }
+.chart { background: white; border-radius: 10px; padding: 16px; margin: 12px 0; }
+.chart h2 { font-size: 1.1rem; margin: 0 0 12px; }
+.row { display: grid; grid-template-columns: 110px 1fr 50px; align-items: center;
+       gap: 10px; margin: 5px 0; font-size: 0.9rem; }
+.track { background: #e6e9ef; border-radius: 4px; height: 16px; }
+.fill { background: #2f6fed; height: 100%; border-radius: 4px; }
+.num { text-align: right; white-space: nowrap; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 12px; }
+.grid2 .chart { margin: 0; }
+.row { grid-template-columns: 110px 1fr 80px; }
+.table-wrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+th, td { padding: 6px 10px; text-align: right; border-bottom: 1px solid #e6e9ef; }
+th:first-child, td:first-child { text-align: left; }
+th { color: #5d6877; font-weight: 600; position: sticky; top: 0; background: white; }
+.notes li { margin: 6px 0; color: #5d6877; }
+</style>
+</head>
+<body>
+<h1>eSIM dashboard</h1>
+<div class="cards"><div class="card">
+  <div class="label">Total eSIM cards</div>
+  <div class="value">5056</div>
+  <div class="detail"></div>
+</div><div class="card">
+  <div class="label">Cards above 100 €</div>
+  <div class="value">56</div>
+  <div class="detail">1.1 % of the catalog</div>
+</div><div class="card">
+  <div class="label">Price range</div>
+  <div class="value">5.36 € - 154.63 €</div>
+  <div class="detail">aloSIM (lowest), aloSIM (highest)</div>
+</div><div class="card">
+  <div class="label">Average data per card</div>
+  <div class="value">14.49 GB</div>
+  <div class="detail">4403 limited plans, 653 unlimited excluded</div>
+</div><div class="card">
+  <div class="label">Average price</div>
+  <div class="value">29.30 €</div>
+  <div class="detail"></div>
+</div></div>
+<section class="chart"><h2>Cards per provider</h2><div class="row">
+  <span>Airalo</span>
+  <div class="track"><div class="fill" style="width:100.0%"></div></div>
+  <span class="num">722</span>
+</div><div class="row">
+  <span>Ubigi</span>
+  <div class="track"><div class="fill" style="width:77.8%"></div></div>
+  <span class="num">562</span>
+</div><div class="row">
+  <span>eSIMX</span>
+  <div class="track"><div class="fill" style="width:59.8%"></div></div>
+  <span class="num">432</span>
+</div><div class="row">
+  <span>Saily</span>
+  <div class="track"><div class="fill" style="width:52.9%"></div></div>
+  <span class="num">382</span>
+</div><div class="row">
+  <span>GigSky</span>
+  <div class="track"><div class="fill" style="width:47.4%"></div></div>
+  <span class="num">342</span>
+</div><div class="row">
+  <span>Nomad</span>
+  <div class="track"><div class="fill" style="width:43.2%"></div></div>
+  <span class="num">312</span>
+</div><div class="row">
+  <span>Instabridge</span>
+  <div class="track"><div class="fill" style="width:39.1%"></div></div>
+  <span class="num">282</span>
+</div><div class="row">
+  <span>aloSIM</span>
+  <div class="track"><div class="fill" style="width:36.3%"></div></div>
+  <span class="num">262</span>
+</div><div class="row">
+  <span>Holafly</span>
+  <div class="track"><div class="fill" style="width:33.5%"></div></div>
+  <span class="num">242</span>
+</div><div class="row">
+  <span>Yesim</span>
+  <div class="track"><div class="fill" style="width:30.7%"></div></div>
+  <span class="num">222</span>
+</div><div class="row">
+  <span>Jetpac</span>
+  <div class="track"><div class="fill" style="width:29.4%"></div></div>
+  <span class="num">212</span>
+</div><div class="row">
+  <span>Truphone</span>
+  <div class="track"><div class="fill" style="width:28.0%"></div></div>
+  <span class="num">202</span>
+</div><div class="row">
+  <span>JamboSIM</span>
+  <div class="track"><div class="fill" style="width:25.2%"></div></div>
+  <span class="num">182</span>
+</div><div class="row">
+  <span>Flexiroam</span>
+  <div class="track"><div class="fill" style="width:23.8%"></div></div>
+  <span class="num">172</span>
+</div><div class="row">
+  <span>Yatelo</span>
+  <div class="track"><div class="fill" style="width:22.4%"></div></div>
+  <span class="num">162</span>
+</div><div class="row">
+  <span>Maya Mobile</span>
+  <div class="track"><div class="fill" style="width:21.1%"></div></div>
+  <span class="num">152</span>
+</div><div class="row">
+  <span>Roamic</span>
+  <div class="track"><div class="fill" style="width:16.9%"></div></div>
+  <span class="num">122</span>
+</div><div class="row">
+  <span>4S eSIM</span>
+  <div class="track"><div class="fill" style="width:12.7%"></div></div>
+  <span class="num">92</span>
+</div></section>
+<div class="grid2"><section class="chart"><h2>Average price per provider (€)</h2><div class="row">
+  <span>4S eSIM</span>
+  <div class="track"><div class="fill" style="width:75.6%"></div></div>
+  <span class="num">24.26 €</span>
+</div><div class="row">
+  <span>Airalo</span>
+  <div class="track"><div class="fill" style="width:84.3%"></div></div>
+  <span class="num">27.05 €</span>
+</div><div class="row">
+  <span>Truphone</span>
+  <div class="track"><div class="fill" style="width:85.4%"></div></div>
+  <span class="num">27.41 €</span>
+</div><div class="row">
+  <span>Roamic</span>
+  <div class="track"><div class="fill" style="width:87.1%"></div></div>
+  <span class="num">27.97 €</span>
+</div><div class="row">
+  <span>Holafly</span>
+  <div class="track"><div class="fill" style="width:87.2%"></div></div>
+  <span class="num">27.98 €</span>
+</div><div class="row">
+  <span>Saily</span>
+  <div class="track"><div class="fill" style="width:89.9%"></div></div>
+  <span class="num">28.86 €</span>
+</div><div class="row">
+  <span>Maya Mobile</span>
+  <div class="track"><div class="fill" style="width:90.1%"></div></div>
+  <span class="num">28.91 €</span>
+</div><div class="row">
+  <span>eSIMX</span>
+  <div class="track"><div class="fill" style="width:91.4%"></div></div>
+  <span class="num">29.33 €</span>
+</div><div class="row">
+  <span>Ubigi</span>
+  <div class="track"><div class="fill" style="width:92.7%"></div></div>
+  <span class="num">29.76 €</span>
+</div><div class="row">
+  <span>Jetpac</span>
+  <div class="track"><div class="fill" style="width:93.3%"></div></div>
+  <span class="num">29.94 €</span>
+</div><div class="row">
+  <span>Yatelo</span>
+  <div class="track"><div class="fill" style="width:93.9%"></div></div>
+  <span class="num">30.13 €</span>
+</div><div class="row">
+  <span>Instabridge</span>
+  <div class="track"><div class="fill" style="width:94.1%"></div></div>
+  <span class="num">30.19 €</span>
+</div><div class="row">
+  <span>Nomad</span>
+  <div class="track"><div class="fill" style="width:94.1%"></div></div>
+  <span class="num">30.21 €</span>
+</div><div class="row">
+  <span>GigSky</span>
+  <div class="track"><div class="fill" style="width:95.5%"></div></div>
+  <span class="num">30.67 €</span>
+</div><div class="row">
+  <span>aloSIM</span>
+  <div class="track"><div class="fill" style="width:95.7%"></div></div>
+  <span class="num">30.71 €</span>
+</div><div class="row">
+  <span>JamboSIM</span>
+  <div class="track"><div class="fill" style="width:96.5%"></div></div>
+  <span class="num">30.98 €</span>
+</div><div class="row">
+  <span>Flexiroam</span>
+  <div class="track"><div class="fill" style="width:97.5%"></div></div>
+  <span class="num">31.31 €</span>
+</div><div class="row">
+  <span>Yesim</span>
+  <div class="track"><div class="fill" style="width:100.0%"></div></div>
+  <span class="num">32.10 €</span>
+</div></section><section class="chart"><h2>Price per GB by provider (limited plans)</h2><div class="row">
+  <span>Ubigi</span>
+  <div class="track"><div class="fill" style="width:86.5%"></div></div>
+  <span class="num">1.63 €/GB</span>
+</div><div class="row">
+  <span>GigSky</span>
+  <div class="track"><div class="fill" style="width:86.8%"></div></div>
+  <span class="num">1.63 €/GB</span>
+</div><div class="row">
+  <span>Yatelo</span>
+  <div class="track"><div class="fill" style="width:86.9%"></div></div>
+  <span class="num">1.63 €/GB</span>
+</div><div class="row">
+  <span>Yesim</span>
+  <div class="track"><div class="fill" style="width:87.5%"></div></div>
+  <span class="num">1.64 €/GB</span>
+</div><div class="row">
+  <span>Jetpac</span>
+  <div class="track"><div class="fill" style="width:87.9%"></div></div>
+  <span class="num">1.65 €/GB</span>
+</div><div class="row">
+  <span>Truphone</span>
+  <div class="track"><div class="fill" style="width:88.0%"></div></div>
+  <span class="num">1.65 €/GB</span>
+</div><div class="row">
+  <span>JamboSIM</span>
+  <div class="track"><div class="fill" style="width:89.1%"></div></div>
+  <span class="num">1.67 €/GB</span>
+</div><div class="row">
+  <span>eSIMX</span>
+  <div class="track"><div class="fill" style="width:89.6%"></div></div>
+  <span class="num">1.68 €/GB</span>
+</div><div class="row">
+  <span>Flexiroam</span>
+  <div class="track"><div class="fill" style="width:89.6%"></div></div>
+  <span class="num">1.69 €/GB</span>
+</div><div class="row">
+  <span>aloSIM</span>
+  <div class="track"><div class="fill" style="width:90.1%"></div></div>
+  <span class="num">1.69 €/GB</span>
+</div><div class="row">
+  <span>Nomad</span>
+  <div class="track"><div class="fill" style="width:90.2%"></div></div>
+  <span class="num">1.70 €/GB</span>
+</div><div class="row">
+  <span>Saily</span>
+  <div class="track"><div class="fill" style="width:91.4%"></div></div>
+  <span class="num">1.72 €/GB</span>
+</div><div class="row">
+  <span>Instabridge</span>
+  <div class="track"><div class="fill" style="width:92.7%"></div></div>
+  <span class="num">1.74 €/GB</span>
+</div><div class="row">
+  <span>Roamic</span>
+  <div class="track"><div class="fill" style="width:94.2%"></div></div>
+  <span class="num">1.77 €/GB</span>
+</div><div class="row">
+  <span>Maya Mobile</span>
+  <div class="track"><div class="fill" style="width:94.5%"></div></div>
+  <span class="num">1.78 €/GB</span>
+</div><div class="row">
+  <span>Holafly</span>
+  <div class="track"><div class="fill" style="width:95.0%"></div></div>
+  <span class="num">1.79 €/GB</span>
+</div><div class="row">
+  <span>Airalo</span>
+  <div class="track"><div class="fill" style="width:95.5%"></div></div>
+  <span class="num">1.80 €/GB</span>
+</div><div class="row">
+  <span>4S eSIM</span>
+  <div class="track"><div class="fill" style="width:100.0%"></div></div>
+  <span class="num">1.88 €/GB</span>
+</div></section></div>
+<section class="chart"><h2>Availability by country</h2>
+<div class="table-wrap"><table>
+<tr><th>Country</th><th>Cards</th><th>Providers</th><th>Cheapest (€)</th>
+<th>Best price per GB (€)</th><th>Unlimited cards</th><th>Cheapest unlimited (€)</th></tr>
+<tr>
+  <td>Afrique du Sud</td><td>82</td><td>17</td>
+  <td>5.36</td><td>0.92</td>
+  <td>12</td><td>30.91</td>
+</tr><tr>
+  <td>Allemagne</td><td>87</td><td>17</td>
+  <td>5.42</td><td>0.93</td>
+  <td>14</td><td>31.64</td>
+</tr><tr>
+  <td>Amérique du Nord</td><td>192</td><td>18</td>
+  <td>7.60</td><td>1.27</td>
+  <td>28</td><td>41.39</td>
+</tr><tr>
+  <td>Arabie saoudite</td><td>102</td><td>18</td>
+  <td>5.52</td><td>0.91</td>
+  <td>8</td><td>30.99</td>
+</tr><tr>
+  <td>Argentine</td><td>73</td><td>17</td>
+  <td>5.41</td><td>0.96</td>
+  <td>9</td><td>33.22</td>
+</tr><tr>
+  <td>Asie</td><td>194</td><td>18</td>
+  <td>7.49</td><td>1.34</td>
+  <td>29</td><td>45.20</td>
+</tr><tr>
+  <td>Australie</td><td>78</td><td>15</td>
+  <td>5.49</td><td>0.93</td>
+  <td>16</td><td>31.17</td>
+</tr><tr>
+  <td>Autriche</td><td>86</td><td>17</td>
+  <td>5.84</td><td>0.99</td>
+  <td>7</td><td>31.57</td>
+</tr><tr>
+  <td>Belgique</td><td>96</td><td>18</td>
+  <td>5.38</td><td>0.98</td>
+  <td>12</td><td>31.14</td>
+</tr><tr>
+  <td>Brésil</td><td>63</td><td>16</td>
+  <td>6.21</td><td>0.92</td>
+  <td>7</td><td>31.60</td>
+</tr><tr>
+  <td>Canada</td><td>70</td><td>17</td>
+  <td>5.41</td><td>1.03</td>
+  <td>8</td><td>35.76</td>
+</tr><tr>
+  <td>Chili</td><td>76</td><td>18</td>
+  <td>5.40</td><td>0.97</td>
+  <td>15</td><td>31.59</td>
+</tr><tr>
+  <td>Chine</td><td>88</td><td>17</td>
+  <td>5.65</td><td>0.92</td>
+  <td>10</td><td>33.03</td>
+</tr><tr>
+  <td>Colombie</td><td>95</td><td>18</td>
+  <td>5.36</td><td>0.99</td>
+  <td>19</td><td>31.55</td>
+</tr><tr>
+  <td>Corée du Sud</td><td>86</td><td>18</td>
+  <td>5.55</td><td>0.96</td>
+  <td>12</td><td>32.19</td>
+</tr><tr>
+  <td>Croatie</td><td>90</td><td>17</td>
+  <td>5.42</td><td>0.91</td>
+  <td>14</td><td>30.79</td>
+</tr><tr>
+  <td>Espagne</td><td>88</td><td>15</td>
+  <td>5.47</td><td>0.98</td>
+  <td>8</td><td>33.54</td>
+</tr><tr>
+  <td>Europe</td><td>206</td><td>18</td>
+  <td>7.52</td><td>1.27</td>
+  <td>29</td><td>41.33</td>
+</tr><tr>
+  <td>France</td><td>85</td><td>17</td>
+  <td>5.62</td><td>1.07</td>
+  <td>9</td><td>32.55</td>
+</tr><tr>
+  <td>Grèce</td><td>83</td><td>18</td>
+  <td>5.69</td><td>1.01</td>
+  <td>12</td><td>33.80</td>
+</tr><tr>
+  <td>Inde</td><td>82</td><td>17</td>
+  <td>5.89</td><td>0.93</td>
+  <td>12</td><td>33.02</td>
+</tr><tr>
+  <td>Indonésie</td><td>104</td><td>18</td>
+  <td>5.38</td><td>0.94</td>
+  <td>12</td><td>33.23</td>
+</tr><tr>
+  <td>Irlande</td><td>87</td><td>18</td>
+  <td>5.36</td><td>0.93</td>
+  <td>9</td><td>32.50</td>
+</tr><tr>
+  <td>Israël</td><td>76</td><td>17</td>
+  <td>5.36</td><td>0.94</td>
+  <td>10</td><td>31.54</td>
+</tr><tr>
+  <td>Italie</td><td>84</td><td>16</td>
+  <td>5.38</td><td>0.92</td>
+  <td>8</td><td>36.63</td>
+</tr><tr>
+  <td>Japon</td><td>83</td><td>17</td>
+  <td>6.01</td><td>0.91</td>
+  <td>6</td><td>33.74</td>
+</tr><tr>
+  <td>Jordanie</td><td>76</td><td>17</td>
+  <td>5.52</td><td>0.92</td>
+  <td>9</td><td>31.43</td>
+</tr><tr>
+  <td>Kenya</td><td>96</td><td>18</td>
+  <td>5.39</td><td>0.96</td>
+  <td>15</td><td>31.59</td>
+</tr><tr>
+  <td>Malaisie</td><td>83</td><td>18</td>
+  <td>5.46</td><td>1.04</td>
+  <td>10</td><td>32.07</td>
+</tr><tr>
+  <td>Maroc</td><td>80</td><td>16</td>
+  <td>5.42</td><td>0.96</td>
+  <td>10</td><td>31.92</td>
+</tr><tr>
+  <td>Mexique</td><td>84</td><td>18</td>
+  <td>5.46</td><td>0.97</td>
+  <td>8</td><td>32.38</td>
+</tr><tr>
+  <td>Monde</td><td>186</td><td>18</td>
+  <td>7.91</td><td>1.28</td>
+  <td>31</td><td>39.94</td>
+</tr><tr>
+  <td>Nigeria</td><td>78</td><td>18</td>
+  <td>5.90</td><td>1.14</td>
+  <td>5</td><td>52.66</td>
+</tr><tr>
+  <td>Norvège</td><td>89</td><td>17</td>
+  <td>5.68</td><td>1.02</td>
+  <td>10</td><td>31.81</td>
+</tr><tr>
+  <td>Nouvelle-Zélande</td><td>86</td><td>18</td>
+  <td>5.61</td><td>0.94</td>
+  <td>7</td><td>34.44</td>
+</tr><tr>
+  <td>Pays-Bas</td><td>93</td><td>18</td>
+  <td>5.52</td><td>0.91</td>
+  <td>10</td><td>30.87</td>
+</tr><tr>
+  <td>Philippines</td><td>92</td><td>16</td>
+  <td>5.76</td><td>0.91</td>
+  <td>16</td><td>30.70</td>
+</tr><tr>
+  <td>Pologne</td><td>88</td><td>17</td>
+  <td>5.59</td><td>0.91</td>
+  <td>9</td><td>30.74</td>
+</tr><tr>
+  <td>Portugal</td><td>89</td><td>17</td>
+  <td>5.47</td><td>0.91</td>
+  <td>12</td><td>32.06</td>
+</tr><tr>
+  <td>Pérou</td><td>89</td><td>18</td>
+  <td>5.45</td><td>0.93</td>
+  <td>12</td><td>31.14</td>
+</tr><tr>
+  <td>Qatar</td><td>89</td><td>17</td>
+  <td>5.38</td><td>0.94</td>
+  <td>15</td><td>31.26</td>
+</tr><tr>
+  <td>Royaume-Uni</td><td>76</td><td>17</td>
+  <td>5.56</td><td>0.93</td>
+  <td>9</td><td>31.52</td>
+</tr><tr>
+  <td>Rép. dominicaine</td><td>92</td><td>16</td>
+  <td>5.81</td><td>0.92</td>
+  <td>15</td><td>33.49</td>
+</tr><tr>
+  <td>Singapour</td><td>99</td><td>16</td>
+  <td>5.47</td><td>0.93</td>
+  <td>14</td><td>30.69</td>
+</tr><tr>
+  <td>Suisse</td><td>80</td><td>18</td>
+  <td>5.86</td><td>0.91</td>
+  <td>12</td><td>30.97</td>
+</tr><tr>
+  <td>Suède</td><td>80</td><td>17</td>
+  <td>6.19</td><td>0.95</td>
+  <td>7</td><td>33.68</td>
+</tr><tr>
+  <td>Tanzanie</td><td>91</td><td>18</td>
+  <td>5.44</td><td>0.96</td>
+  <td>12</td><td>36.52</td>
+</tr><tr>
+  <td>Tchéquie</td><td>66</td><td>18</td>
+  <td>5.40</td><td>0.91</td>
+  <td>7</td><td>47.17</td>
+</tr><tr>
+  <td>Thaïlande</td><td>87</td><td>18</td>
+  <td>5.54</td><td>0.93</td>
+  <td>6</td><td>31.77</td>
+</tr><tr>
+  <td>Turquie</td><td>93</td><td>18</td>
+  <td>5.48</td><td>0.99</td>
+  <td>12</td><td>34.72</td>
+</tr><tr>
+  <td>Vietnam</td><td>86</td><td>18</td>
+  <td>5.36</td><td>1.02</td>
+  <td>8</td><td>30.84</td>
+</tr><tr>
+  <td>Égypte</td><td>98</td><td>18</td>
+  <td>5.38</td><td>0.92</td>
+  <td>14</td><td>35.36</td>
+</tr><tr>
+  <td>Émirats arabes unis</td><td>76</td><td>16</td>
+  <td>5.52</td><td>0.91</td>
+  <td>10</td><td>35.87</td>
+</tr><tr>
+  <td>États-Unis</td><td>98</td><td>17</td>
+  <td>5.37</td><td>0.93</td>
+  <td>13</td><td>30.69</td>
+</tr>
+</table></div></section>
+<section class="chart"><h2>Notes on the data</h2><ul class="notes">
+<li>"Above 100 €" means strictly more than 100 €.</li>
+<li>Average data ignores 653 unlimited plans (no GB value).
+Price per GB ignores them too.</li>
+<li>Price per GB favors big plans: it compares providers and countries, it does
+not say which card to buy. The stay length of the traveller is not in the data.</li>
+<li>Europe, Asie, Monde and Amérique du Nord are separate rows: the data does not
+say which countries they cover.</li>
+</ul></section>
+</body>
+</html>
