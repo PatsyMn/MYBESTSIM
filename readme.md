@@ -112,6 +112,22 @@ héberger (aucun serveur à maintenir). Un serveur serait une évolution possibl
   fournisseur partagent pays, volume et durée, mais chaque SKU est unique, donc
   une ligne = une carte.
 
+  ## Un dashboard par pays
+
+Une page est générée pour chaque destination (54 pages, par exemple
+`docs/pays/espagne.html`). Elle répond à la question d'un voyageur : « que puis-je
+acheter pour ce pays ? ». Elle affiche :
+
+- le nombre de cartes disponibles et de fournisseurs ;
+- le prix le plus bas et le meilleur prix au Go ;
+- les cartes illimitées et le prix de la moins chère ;
+- un graphique du prix le plus bas par fournisseur ;
+- le tableau de toutes les cartes du pays, de la moins chère à la plus chère
+  (data, validité, prix, prix au Go, réseau, rechargeable).
+**Comment c'est fait.** Les statistiques par pays existaient déjà (`stats_by_country`).
+J'ai ajouté deux fonctions dans `stats.py`. Chaque ligne du tableau de la
+page principale est un lien vers la page du pays.
+
 ## Limites connues
 
 - **Les colonnes sont lues par leur position** : si un fournisseur change l'ordre
