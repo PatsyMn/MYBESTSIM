@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>eSIM pour Irlande</title>
+<style>
+body { font-family: system-ui, sans-serif; margin: 24px; background: #f5f6f8; color: #1c2430; }
+h1 { margin-bottom: 4px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+         gap: 12px; margin: 20px 0; }
+.card { background: white; border-radius: 10px; padding: 16px; }
+.label { color: #5d6877; font-size: 0.9rem; }
+.value { font-size: 1.9rem; font-weight: bold; margin: 4px 0; }
+.detail { color: #5d6877; font-size: 0.85rem; }
+.chart { background: white; border-radius: 10px; padding: 16px; margin: 12px 0; }
+.chart h2 { font-size: 1.1rem; margin: 0 0 12px; }
+.row { display: grid; grid-template-columns: 110px 1fr 80px; align-items: center;
+       gap: 10px; margin: 5px 0; font-size: 0.9rem; }
+.track { background: #e6e9ef; border-radius: 4px; height: 16px; }
+.fill { background: #2f6fed; height: 100%; border-radius: 4px; }
+.num { text-align: right; white-space: nowrap; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 12px; }
+.grid2 .chart { margin: 0; }
+.table-wrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+th, td { padding: 6px 10px; text-align: right; border-bottom: 1px solid #e6e9ef; }
+th:first-child, td:first-child { text-align: left; }
+th { color: #5d6877; font-weight: 600; }
+.notes li { margin: 6px 0; color: #5d6877; }
+a { color: #2f6fed; }
+.back { display: inline-block; margin-bottom: 8px; }
+td.left, th.left { text-align: left; }
+</style>
+</head>
+<body>
+<a class="back" href="../index.html">&larr; Retour au tableau de bord</a>
+<h1>eSIM pour Irlande</h1>
+<div class="cards"><div class="card">
+  <div class="label">Cartes disponibles</div>
+  <div class="value">87</div>
+  <div class="detail">chez 18 fournisseurs</div>
+</div><div class="card">
+  <div class="label">Prix le plus bas</div>
+  <div class="value">5,36 €</div>
+  <div class="detail"></div>
+</div><div class="card">
+  <div class="label">Meilleur prix au Go</div>
+  <div class="value">0,93 €/Go</div>
+  <div class="detail">forfaits limités</div>
+</div><div class="card">
+  <div class="label">Cartes illimitées</div>
+  <div class="value">9</div>
+  <div class="detail">la moins chère : 32,50 €</div>
+</div></div>
+<section class="chart"><h2>Prix le plus bas par fournisseur</h2><div class="row">
+  <span>aloSIM</span>
+  <div class="track"><div class="fill" style="width:15.9%"></div></div>
+  <span class="num">5,36 €</span>
+</div><div class="row">
+  <span>eSIMX</span>
+  <div class="track"><div class="fill" style="width:16.7%"></div></div>
+  <span class="num">5,64 €</span>
+</div><div class="row">
+  <span>Airalo</span>
+  <div class="track"><div class="fill" style="width:17.8%"></div></div>
+  <span class="num">5,99 €</span>
+</div><div class="row">
+  <span>JamboSIM</span>
+  <div class="track"><div class="fill" style="width:17.9%"></div></div>
+  <span class="num">6,03 €</span>
+</div><div class="row">
+  <span>Yatelo</span>
+  <div class="track"><div class="fill" style="width:18.3%"></div></div>
+  <span class="num">6,18 €</span>
+</div><div class="row">
+  <span>Instabridge</span>
+  <div class="track"><div class="fill" style="width:19.2%"></div></div>
+  <span class="num">6,47 €</span>
+</div><div class="row">
+  <span>GigSky</span>
+  <div class="track"><div class="fill" style="width:23.3%"></div></div>
+  <span class="num">7,85 €</span>
+</div><div class="row">
+  <span>Holafly</span>
+  <div class="track"><div class="fill" style="width:24.7%"></div></div>
+  <span class="num">8,32 €</span>
+</div><div class="row">
+  <span>Yesim</span>
+  <div class="track"><div class="fill" style="width:25.4%"></div></div>
+  <span class="num">8,56 €</span>
+</div><div class="row">
+  <span>Saily</span>
+  <div class="track"><div class="fill" style="width:26.6%"></div></div>
+  <span class="num">8,96 €</span>
+</div><div class="row">
+  <span>Nomad</span>
+  <div class="track"><div class="fill" style="width:28.0%"></div></div>
+  <span class="num">9,45 €</span>
+</div><div class="row">
+  <span>Roamic</span>
+  <div class="track"><div class="fill" style="width:33.0%"></div></div>
+  <span class="num">11,12 €</span>
+</div><div class="row">
+  <span>Maya Mobile</span>
+  <div class="track"><div class="fill" style="width:33.3%"></div></div>
+  <span class="num">11,22 €</span>
+</div><div class="row">
+  <span>Ubigi</span>
+  <div class="track"><div class="fill" style="width:33.3%"></div></div>
+  <span class="num">11,23 €</span>
+</div><div class="row">
+  <span>Jetpac</span>
+  <div class="track"><div class="fill" style="width:34.9%"></div></div>
+  <span class="num">11,76 €</span>
+</div><div class="row">
+  <span>Truphone</span>
+  <div class="track"><div class="fill" style="width:35.7%"></div></div>
+  <span class="num">12,03 €</span>
+</div><div class="row">
+  <span>4S eSIM</span>
+  <div class="track"><div class="fill" style="width:82.6%"></div></div>
+  <span class="num">27,88 €</span>
+</div><div class="row">
+  <span>Flexiroam</span>
+  <div class="track"><div class="fill" style="width:100.0%"></div></div>
+  <span class="num">33,74 €</span>
+</div></section>
+<section class="chart"><h2>Toutes les cartes</h2>
+<div class="table-wrap"><table>
+<tr><th class="left">Fournisseur</th><th>Data</th><th>Validité</th><th>Prix (€)</th>
+<th>Prix au Go (€)</th><th>Réseau</th><th>Rechargeable</th></tr>
+<tr>
+  <td class="left">aloSIM</td><td>1 Go</td>
+  <td>7 j</td><td>5,36</td><td>5,36</td>
+  <td>5G</td><td>oui</td>
+</tr><tr>
+  <td class="left">eSIMX</td><td>1 Go</td>
+  <td>7 j</td><td>5,64</td><td>5,64</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">Airalo</td><td>1 Go</td>
+  <td>7 j</td><td>5,99</td><td>5,99</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">JamboSIM</td><td>1 Go</td>
+  <td>15 j</td><td>6,03</td><td>6,03</td>
+  <td>4G</td><td>non</td>
+</tr><tr>
+  <td class="left">Yatelo</td><td>1 Go</td>
+  <td>15 j</td><td>6,18</td><td>6,18</td>
+  <td>5G</td><td>oui</td>
+</tr><tr>
+  <td class="left">Instabridge</td><td>1 Go</td>
+  <td>7 j</td><td>6,47</td><td>6,47</td>
+  <td>4G</td><td>non</td>
+</tr><tr>
+  <td class="left">Airalo</td><td>1 Go</td>
+  <td>15 j</td><td>6,50</td><td>6,50</td>
+  <td>4G</td><td>non</td>
+</tr><tr>
+  <td class="left">GigSky</td><td>1 Go</td>
+  <td>30 j</td><td>7,85</td><td>7,85</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">Airalo</td><td>1 Go</td>
+  <td>30 j</td><td>8,05</td><td>8,05</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">eSIMX</td><td>1 Go</td>
+  <td>30 j</td><td>8,12</td><td>8,12</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">Holafly</td><td>1 Go</td>
+  <td>30 j</td><td>8,32</td><td>8,32</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">Yesim</td><td>3 Go</td>
+  <td>7 j</td><td>8,56</td><td>2,85</td>
+  <td>5G</td><td>oui</td>
+</tr><tr>
+  <td class="left">Saily</td><td>3 Go</td>
+  <td>7 j</td><td>8,96</td><td>2,99</td>
+  <td>5G</td><td>non</td>
+</tr><tr>
+  <td class="left">Nomad</td><td>3 Go</td>
+  <td>7 j</td><td>9,45</td><td>3,15</td>
+  <td>4G</td><td>non</td>
+</tr><tr>
+  <td class="left">Holafly</td><td>3 Go</td>
+  <td>15 j</td><td>10,16</td><td>3,39</td>
+  <td>4G</td><td>non</td>
+</tr><tr>
+  <td class="left">Nomad</td><td>3 Go</td>
+  <td>15 j</td><td>10,67</td><td>3,56</td>
+  <td>4G</td><td>non</td>
+</tr><tr>
+  <td class="left">Roamic</td><td>5 Go</td>
+  <td>7 j</td><td>11,12</td><td>2,22</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">Holafly</td><td>5 Go</td>
+  <td>7 j</td><td>11,16</td><td>2,23</td>
+  <td>5G</td><td>oui</td>
+</tr><tr>
+  <td class="left">Nomad</td><td>3 Go</td>
+  <td>30 j</td><td>11,19</td><td>3,73</td>
+  <td>5G</td><td>non</td>
+</tr><tr>
+  <td class="left">Maya Mobile</td><td>5 Go</td>
+  <td>7 j</td><td>11,22</td><td>2,24</td>
+  <td>4G</td><td>non</td>
+</tr><tr>
+  <td class="left">Ubigi</td><td>5 Go</td>
+  <td>7 j</td><td>11,23</td><td>2,25</td>
+  <td>5G</td><td>oui</td>
+</tr><tr>
+  <td class="left">Ubigi</td><td>3 Go</td>
+  <td>15 j</td><td>11,30</td><td>3,77</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">aloSIM</td><td>5 Go</td>
+  <td>7 j</td><td>11,40</td><td>2,28</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">Ubigi</td><td>5 Go</td>
+  <td>7 j</td><td>11,58</td><td>2,32</td>
+  <td>5G</td><td>non</td>
+</tr><tr>
+  <td class="left">Airalo</td><td>3 Go</td>
+  <td>30 j</td><td>11,67</td><td>3,89</td>
+  <td>4G</td><td>non</td>
+</tr><tr>
+  <td class="left">Jetpac</td><td>5 Go</td>
+  <td>7 j</td><td>11,76</td><td>2,35</td>
+  <td>5G</td><td>non</td>
+</tr><tr>
+  <td class="left">Ubigi</td><td>3 Go</td>
+  <td>30 j</td><td>11,78</td><td>3,93</td>
+  <td>4G</td><td>non</td>
+</tr><tr>
+  <td class="left">Truphone</td><td>5 Go</td>
+  <td>7 j</td><td>12,03</td><td>2,41</td>
+  <td>4G</td><td>non</td>
+</tr><tr>
+  <td class="left">Truphone</td><td>5 Go</td>
+  <td>15 j</td><td>12,43</td><td>2,49</td>
+  <td>5G</td><td>non</td>
+</tr><tr>
+  <td class="left">Jetpac</td><td>5 Go</td>
+  <td>7 j</td><td>12,44</td><td>2,49</td>
+  <td>5G</td><td>non</td>
+</tr><tr>
+  <td class="left">aloSIM</td><td>3 Go</td>
+  <td>30 j</td><td>12,54</td><td>4,18</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">Ubigi</td><td>5 Go</td>
+  <td>7 j</td><td>12,60</td><td>2,52</td>
+  <td>5G</td><td>non</td>
+</tr><tr>
+  <td class="left">eSIMX</td><td>3 Go</td>
+  <td>30 j</td><td>12,70</td><td>4,23</td>
+  <td>4G</td><td>non</td>
+</tr><tr>
+  <td class="left">Airalo</td><td>5 Go</td>
+  <td>7 j</td><td>13,12</td><td>2,62</td>
+  <td>5G</td><td>oui</td>
+</tr><tr>
+  <td class="left">JamboSIM</td><td>3 Go</td>
+  <td>30 j</td><td>13,30</td><td>4,43</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">Saily</td><td>5 Go</td>
+  <td>15 j</td><td>13,48</td><td>2,70</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">GigSky</td><td>5 Go</td>
+  <td>30 j</td><td>14,51</td><td>2,90</td>
+  <td>4G</td><td>non</td>
+</tr><tr>
+  <td class="left">Ubigi</td><td>5 Go</td>
+  <td>15 j</td><td>14,82</td><td>2,96</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">Maya Mobile</td><td>5 Go</td>
+  <td>30 j</td><td>15,89</td><td>3,18</td>
+  <td>4G</td><td>non</td>
+</tr><tr>
+  <td class="left">Saily</td><td>5 Go</td>
+  <td>30 j</td><td>16,25</td><td>3,25</td>
+  <td>5G</td><td>oui</td>
+</tr><tr>
+  <td class="left">Airalo</td><td>5 Go</td>
+  <td>30 j</td><td>16,45</td><td>3,29</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">aloSIM</td><td>10 Go</td>
+  <td>7 j</td><td>17,00</td><td>1,70</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">eSIMX</td><td>10 Go</td>
+  <td>7 j</td><td>17,13</td><td>1,71</td>
+  <td>4G</td><td>non</td>
+</tr><tr>
+  <td class="left">GigSky</td><td>5 Go</td>
+  <td>30 j</td><td>17,22</td><td>3,44</td>
+  <td>4G</td><td>non</td>
+</tr><tr>
+  <td class="left">Ubigi</td><td>10 Go</td>
+  <td>15 j</td><td>18,21</td><td>1,82</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">eSIMX</td><td>10 Go</td>
+  <td>15 j</td><td>18,54</td><td>1,85</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">aloSIM</td><td>10 Go</td>
+  <td>7 j</td><td>18,82</td><td>1,88</td>
+  <td>5G</td><td>non</td>
+</tr><tr>
+  <td class="left">Airalo</td><td>10 Go</td>
+  <td>15 j</td><td>21,06</td><td>2,11</td>
+  <td>4G</td><td>non</td>
+</tr><tr>
+  <td class="left">Airalo</td><td>10 Go</td>
+  <td>15 j</td><td>21,41</td><td>2,14</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">Saily</td><td>10 Go</td>
+  <td>15 j</td><td>21,53</td><td>2,15</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">eSIMX</td><td>10 Go</td>
+  <td>30 j</td><td>23,50</td><td>2,35</td>
+  <td>5G</td><td>non</td>
+</tr><tr>
+  <td class="left">Truphone</td><td>10 Go</td>
+  <td>30 j</td><td>23,67</td><td>2,37</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">Ubigi</td><td>10 Go</td>
+  <td>30 j</td><td>24,31</td><td>2,43</td>
+  <td>4G</td><td>non</td>
+</tr><tr>
+  <td class="left">eSIMX</td><td>10 Go</td>
+  <td>30 j</td><td>25,43</td><td>2,54</td>
+  <td>5G</td><td>oui</td>
+</tr><tr>
+  <td class="left">Instabridge</td><td>10 Go</td>
+  <td>30 j</td><td>25,86</td><td>2,59</td>
+  <td>4G</td><td>non</td>
+</tr><tr>
+  <td class="left">aloSIM</td><td>20 Go</td>
+  <td>7 j</td><td>26,84</td><td>1,34</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">4S eSIM</td><td>20 Go</td>
+  <td>7 j</td><td>27,88</td><td>1,39</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">eSIMX</td><td>20 Go</td>
+  <td>7 j</td><td>28,82</td><td>1,44</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">Instabridge</td><td>20 Go</td>
+  <td>7 j</td><td>28,91</td><td>1,45</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">Airalo</td><td>20 Go</td>
+  <td>7 j</td><td>29,35</td><td>1,47</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">aloSIM</td><td>20 Go</td>
+  <td>15 j</td><td>30,14</td><td>1,51</td>
+  <td>4G</td><td>non</td>
+</tr><tr>
+  <td class="left">Jetpac</td><td>20 Go</td>
+  <td>15 j</td><td>31,75</td><td>1,59</td>
+  <td>4G</td><td>non</td>
+</tr><tr>
+  <td class="left">eSIMX</td><td>Illimité</td>
+  <td>7 j</td><td>32,50</td><td>-</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">eSIMX</td><td>20 Go</td>
+  <td>30 j</td><td>32,95</td><td>1,65</td>
+  <td>5G</td><td>oui</td>
+</tr><tr>
+  <td class="left">JamboSIM</td><td>20 Go</td>
+  <td>15 j</td><td>33,51</td><td>1,68</td>
+  <td>4G</td><td>non</td>
+</tr><tr>
+  <td class="left">Instabridge</td><td>20 Go</td>
+  <td>30 j</td><td>33,66</td><td>1,68</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">Flexiroam</td><td>Illimité</td>
+  <td>7 j</td><td>33,74</td><td>-</td>
+  <td>5G</td><td>oui</td>
+</tr><tr>
+  <td class="left">Airalo</td><td>Illimité</td>
+  <td>7 j</td><td>34,45</td><td>-</td>
+  <td>4G</td><td>non</td>
+</tr><tr>
+  <td class="left">Jetpac</td><td>Illimité</td>
+  <td>7 j</td><td>34,57</td><td>-</td>
+  <td>4G</td><td>non</td>
+</tr><tr>
+  <td class="left">Yesim</td><td>20 Go</td>
+  <td>30 j</td><td>35,18</td><td>1,76</td>
+  <td>4G</td><td>non</td>
+</tr><tr>
+  <td class="left">Saily</td><td>Illimité</td>
+  <td>7 j</td><td>35,80</td><td>-</td>
+  <td>5G</td><td>non</td>
+</tr><tr>
+  <td class="left">Airalo</td><td>Illimité</td>
+  <td>7 j</td><td>36,65</td><td>-</td>
+  <td>5G</td><td>oui</td>
+</tr><tr>
+  <td class="left">Instabridge</td><td>20 Go</td>
+  <td>30 j</td><td>37,44</td><td>1,87</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">Airalo</td><td>20 Go</td>
+  <td>30 j</td><td>39,25</td><td>1,96</td>
+  <td>5G</td><td>oui</td>
+</tr><tr>
+  <td class="left">Ubigi</td><td>20 Go</td>
+  <td>30 j</td><td>39,27</td><td>1,96</td>
+  <td>5G</td><td>non</td>
+</tr><tr>
+  <td class="left">Airalo</td><td>50 Go</td>
+  <td>7 j</td><td>46,41</td><td>0,93</td>
+  <td>4G</td><td>non</td>
+</tr><tr>
+  <td class="left">Ubigi</td><td>50 Go</td>
+  <td>7 j</td><td>47,15</td><td>0,94</td>
+  <td>4G</td><td>non</td>
+</tr><tr>
+  <td class="left">Jetpac</td><td>50 Go</td>
+  <td>15 j</td><td>50,71</td><td>1,01</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">Flexiroam</td><td>Illimité</td>
+  <td>15 j</td><td>51,87</td><td>-</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">Ubigi</td><td>50 Go</td>
+  <td>30 j</td><td>62,01</td><td>1,24</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">GigSky</td><td>50 Go</td>
+  <td>30 j</td><td>62,09</td><td>1,24</td>
+  <td>4G</td><td>non</td>
+</tr><tr>
+  <td class="left">Instabridge</td><td>50 Go</td>
+  <td>30 j</td><td>66,02</td><td>1,32</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">Saily</td><td>50 Go</td>
+  <td>30 j</td><td>67,46</td><td>1,35</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">aloSIM</td><td>50 Go</td>
+  <td>30 j</td><td>69,19</td><td>1,38</td>
+  <td>4G</td><td>oui</td>
+</tr><tr>
+  <td class="left">Airalo</td><td>50 Go</td>
+  <td>30 j</td><td>70,02</td><td>1,40</td>
+  <td>4G</td><td>non</td>
+</tr><tr>
+  <td class="left">GigSky</td><td>Illimité</td>
+  <td>30 j</td><td>74,17</td><td>-</td>
+  <td>4G</td><td>non</td>
+</tr><tr>
+  <td class="left">Ubigi</td><td>Illimité</td>
+  <td>30 j</td><td>82,31</td><td>-</td>
+  <td>4G</td><td>oui</td>
+</tr>
+</table></div></section>
+
+</body>
+</html>

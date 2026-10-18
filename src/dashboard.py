@@ -1,7 +1,13 @@
+import re
+import unicodedata
 from html import escape
 from pathlib import Path
 
-from stats import PRICE, PROVIDER
+from stats import (DATA_GB, NETWORK, PRICE, PROVIDER, TOP_UP, VALIDITY,
+                   cheapest_by_provider, esims_of_country, format_data)
+
+# These "countries" are in fact zones that cover several countries.
+ZONES = ["Europe", "Asie", "Monde", "Amérique du Nord"]
 
 STYLE = """
 body { font-family: system-ui, sans-serif; margin: 24px; background: #f5f6f8; color: #1c2430; }
@@ -27,6 +33,9 @@ th, td { padding: 6px 10px; text-align: right; border-bottom: 1px solid #e6e9ef;
 th:first-child, td:first-child { text-align: left; }
 th { color: #5d6877; font-weight: 600; }
 .notes li { margin: 6px 0; color: #5d6877; }
+a { color: #2f6fed; }
+.back { display: inline-block; margin-bottom: 8px; }
+td.left, th.left { text-align: left; }
 """
 
 
@@ -46,6 +55,12 @@ def fmt_price(value):
 
 def fmt_per_gb(value):
     return f"{fr(value)} €/Go"
+
+
+def country_slug(name):
+    """'Afrique du Sud' -> 'afrique-du-sud' (no accent, no space: safe in a file name)."""
+    text = unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode()
+    return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
 
 
 def kpi(label, value, detail=""):
@@ -77,11 +92,12 @@ def country_table(countries):
         per_gb = "-" if c["best_price_per_gb"] is None else fr(c["best_price_per_gb"])
         unlimited = "aucune" if c["cheapest_unlimited"] is None else fr(c["cheapest_unlimited"])
         rows += f"""<tr>
-  <td>{escape(c["country"])}</td><td>{c["cards"]}</td><td>{c["providers"]}</td>
+  <td><a href="pays/{country_slug(c["country"])}.html">{escape(c["country"])}</a></td><td>{c["cards"]}</td><td>{c["providers"]}</td>
   <td>{fr(c["cheapest"])}</td><td>{per_gb}</td>
   <td>{c["unlimited_cards"]}</td><td>{unlimited}</td>
 </tr>"""
     return f"""<section class="chart"><h2>Disponibilité par pays</h2>
+<p class="detail">Cliquez sur un pays pour voir toutes ses cartes.</p>
 <div class="table-wrap"><table>
 <tr><th>Pays</th><th>Cartes</th><th>Fournisseurs</th><th>Moins cher (€)</th>
 <th>Meilleur prix au Go (€)</th><th>Cartes illimitées</th><th>Illimité le moins cher (€)</th></tr>
@@ -139,6 +155,78 @@ données ne précisent pas quels pays chaque zone couvre.</li>
 </html>"""
 
 
+def country_cards_table(country_esims):
+    """Every card of one country, cheapest first."""
+    rows = ""
+    for esim in country_esims:
+        data_gb = esim[DATA_GB]
+        per_gb = "-" if data_gb is None else fr(esim[PRICE] / data_gb)
+        rows += f"""<tr>
+  <td class="left">{escape(esim[PROVIDER])}</td><td>{escape(format_data(data_gb))}</td>
+  <td>{esim[VALIDITY]} j</td><td>{fr(esim[PRICE])}</td><td>{per_gb}</td>
+  <td>{escape(esim[NETWORK])}</td><td>{escape(esim[TOP_UP])}</td>
+</tr>"""
+    return f"""<section class="chart"><h2>Toutes les cartes</h2>
+<div class="table-wrap"><table>
+<tr><th class="left">Fournisseur</th><th>Data</th><th>Validité</th><th>Prix (€)</th>
+<th>Prix au Go (€)</th><th>Réseau</th><th>Rechargeable</th></tr>
+{rows}
+</table></div></section>"""
+
+
+def build_country_html(country, country_esims):
+    """One page for one country. country = one entry of stats["by_country"]."""
+    name = country["country"]
+    per_gb = "-" if country["best_price_per_gb"] is None else fmt_per_gb(country["best_price_per_gb"])
+    unlimited_detail = ("aucune carte illimitée" if country["cheapest_unlimited"] is None
+                        else f'la moins chère : {fmt_price(country["cheapest_unlimited"])}')
+    cards = "".join([
+        kpi("Cartes disponibles", fmt_count(country["cards"]),
+            f'chez {country["providers"]} fournisseurs'),
+        kpi("Prix le plus bas", fmt_price(country["cheapest"])),
+        kpi("Meilleur prix au Go", per_gb, "forfaits limités"),
+        kpi("Cartes illimitées", fmt_count(country["unlimited_cards"]), unlimited_detail),
+    ])
+    chart = bar_chart("Prix le plus bas par fournisseur",
+                      cheapest_by_provider(country_esims), fmt_price)
+    note = ""
+    if name in ZONES:
+        note = """<section class="chart"><h2>À savoir</h2><ul class="notes">
+<li>Cette zone regroupe plusieurs pays. Les données ne précisent pas lesquels : vérifiez
+la liste des pays couverts auprès du fournisseur avant d'acheter.</li>
+</ul></section>"""
+    title = f"eSIM pour {name}"
+    return f"""<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{escape(title)}</title>
+<style>{STYLE}</style>
+</head>
+<body>
+<a class="back" href="../index.html">&larr; Retour au tableau de bord</a>
+<h1>{escape(title)}</h1>
+<div class="cards">{cards}</div>
+{chart}
+{country_cards_table(country_esims)}
+{note}
+</body>
+</html>"""
+
+
+def write_country_pages(esims, stats, folder):
+    """Write one HTML page per country in folder (old pages are removed first)."""
+    folder = Path(folder)
+    folder.mkdir(parents=True, exist_ok=True)
+    for old_page in folder.glob("*.html"):
+        old_page.unlink()
+    for country in stats["by_country"]:
+        page = build_country_html(country, esims_of_country(esims, country["country"]))
+        (folder / f"{country_slug(country['country'])}.html").write_text(page, encoding="utf-8")
+    return len(stats["by_country"])
+
+
 def write_dashboard(stats, output_path):
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -150,5 +238,8 @@ if __name__ == "__main__":
     from read_data import load_all
     from stats import compute_stats
     esims = load_all('dataset')
-    path = write_dashboard(compute_stats(esims), 'docs/index.html')
+    stats = compute_stats(esims)
+    path = write_dashboard(stats, 'docs/index.html')
     print("Tableau de bord écrit dans", path)
+    count = write_country_pages(esims, stats, 'docs/pays')
+    print(count, "pages par pays écrites dans docs/pays")

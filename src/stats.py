@@ -2,12 +2,14 @@ BOLD = "\033[1m"
 RESET = "\033[0m"
 
 # Position of each field in an eSIM row (see read_data.py)
+SKU = 0
 PROVIDER = 1
 COUNTRY = 2
 DATA_GB = 3
 VALIDITY = 4
 PRICE = 5
 NETWORK = 6
+TOP_UP = 7
 
 
 def total_count(esims):
@@ -90,8 +92,8 @@ def price_per_gb_by_provider(esims):
 
 def format_data(data_gb):
     if data_gb is None:
-        return "Unlimited"
-    return f"{data_gb:g} GB"
+        return "Illimité"
+    return f"{data_gb:g} Go"
 
 
 def stats_by_country(esims):
@@ -124,6 +126,25 @@ def stats_by_country(esims):
     return result
 
 
+def esims_of_country(esims, country):
+    """All the cards of one country, cheapest first."""
+    found = []
+    for esim in esims:
+        if esim[COUNTRY] == country:
+            found.append(esim)
+    return sorted(found, key=lambda esim: esim[PRICE])
+
+
+def cheapest_by_provider(country_esims):
+    """Cheapest card of each provider in one country: [(provider, price), ...], cheapest first."""
+    cheapest = {}
+    for esim in country_esims:
+        provider = esim[PROVIDER]
+        if provider not in cheapest or esim[PRICE] < cheapest[provider]:
+            cheapest[provider] = esim[PRICE]
+    return sorted(cheapest.items(), key=lambda item: item[1])
+
+
 def compute_stats(esims):
     """Gather every statistic in one dictionary, for dashboard.py."""
     cheapest, priciest = price_range(esims)
@@ -148,38 +169,38 @@ if __name__ == "__main__":
     from read_data import load_all
     esims = load_all('dataset') #invalid_dataset
 
-    print(f"{BOLD}1. Total eSIM cards:{RESET} {total_count(esims)}")
-    print(f"{BOLD}2. Cards above 100 €:{RESET} {count_above(esims, 100)}")
+    print(f"{BOLD}1. Nombre total de cartes eSIM :{RESET} {total_count(esims)}")
+    print(f"{BOLD}2. Cartes à plus de 100 € :{RESET} {count_above(esims, 100)}")
 
     cheapest, priciest = price_range(esims)
-    print(f"{BOLD}3. Price range:{RESET} {cheapest[PRICE]:.2f} € - {priciest[PRICE]:.2f} €")
-    print(f"   Cheapest: {cheapest[PROVIDER]}, {cheapest[COUNTRY]}, "
-          f"{format_data(cheapest[DATA_GB])}, {cheapest[VALIDITY]} days")
-    print(f"   Priciest: {priciest[PROVIDER]}, {priciest[COUNTRY]}, "
-          f"{format_data(priciest[DATA_GB])}, {priciest[VALIDITY]} days")
+    print(f"{BOLD}3. Fourchette de prix :{RESET} {cheapest[PRICE]:.2f} € - {priciest[PRICE]:.2f} €")
+    print(f"   Moins chère : {cheapest[PROVIDER]}, {cheapest[COUNTRY]}, "
+          f"{format_data(cheapest[DATA_GB])}, {cheapest[VALIDITY]} jours")
+    print(f"   Plus chère : {priciest[PROVIDER]}, {priciest[COUNTRY]}, "
+          f"{format_data(priciest[DATA_GB])}, {priciest[VALIDITY]} jours")
 
     avg_gb, counted = average_data(esims)
-    print(f"{BOLD}4. Average data per card:{RESET} {avg_gb:.2f} GB "
-          f"(on {counted} limited plans, {len(esims) - counted} unlimited excluded)")
+    print(f"{BOLD}4. Moyenne de data par carte :{RESET} {avg_gb:.2f} Go "
+          f"(sur {counted} forfaits limités, {len(esims) - counted} illimités exclus)")
 
-    print(f"{BOLD}5. Average price:{RESET} {average_price(esims):.2f} €")
+    print(f"{BOLD}5. Prix moyen :{RESET} {average_price(esims):.2f} €")
 
-    print(f"{BOLD}6. Cards per provider:{RESET}")
+    print(f"{BOLD}6. Cartes par fournisseur :{RESET}")
     for provider, count in count_by_provider(esims):
         print(f"   {provider}: {count}")
 
-    print(f"{BOLD}7. Average price per provider:{RESET}")
+    print(f"{BOLD}7. Prix moyen par fournisseur :{RESET}")
     for provider, average in average_price_by_provider(esims):
         print(f"   {provider}: {average:.2f} €")
 
-    print(f"{BOLD}8. Price per GB by provider (limited plans only):{RESET}")
+    print(f"{BOLD}8. Prix par Go et par fournisseur (forfaits limités) :{RESET}")
     for provider, ratio in price_per_gb_by_provider(esims):
-        print(f"   {provider}: {ratio:.2f} €/GB")
+        print(f"   {provider}: {ratio:.2f} €/Go")
 
-    print(f"{BOLD}9. Availability by country:{RESET}")
+    print(f"{BOLD}9. Disponibilité par pays :{RESET}")
     for c in stats_by_country(esims):
         per_gb = "-" if c["best_price_per_gb"] is None else f'{c["best_price_per_gb"]:.2f}'
-        unlimited = "none" if c["cheapest_unlimited"] is None else f'{c["cheapest_unlimited"]:.2f} €'
-        print(f'   {c["country"]:20} {c["cards"]:3} cards, {c["providers"]:2} providers, '
-              f'from {c["cheapest"]:6.2f} €, best {per_gb} €/GB, '
-              f'{c["unlimited_cards"]:2} unlimited (from {unlimited})')
+        unlimited = "aucune" if c["cheapest_unlimited"] is None else f'{c["cheapest_unlimited"]:.2f} €'
+        print(f'   {c["country"]:18} {c["cards"]:3} cartes, {c["providers"]:2} fournisseurs, '
+              f'dès {c["cheapest"]:6.2f} €, meilleur prix {per_gb} €/Go, '
+              f'{c["unlimited_cards"]:2} illimitées (dès {unlimited})')
