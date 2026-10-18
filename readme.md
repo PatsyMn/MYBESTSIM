@@ -159,9 +159,16 @@ héberger (aucun serveur à maintenir). Un serveur serait une évolution possibl
 - **Les prix sont ceux de mon jeu de données**, pas ceux du site en direct : ils sont à
   actualiser avant publication.
 
-**Ce que l'IA m'a apporté**
+**Ce que j'ai fait moi-même**
 
 - Décidé du format (page HTML) et de la longueur, et demandé que l'article ressemble au
   style existant de MyBestSim (page Thaïlande, blog).
 - Récupéré les informations manquantes sur le site (prix de départ d'Orange Travel) et fourni la mascotte.
 - Relu l'article et validé le contenu.
+
+**Ce que l'IA m'a apporté**
+
+- L'explication de ce qu'est un article SEO et de la démarche à suivre.
+- La lecture et la synthèse des articles concurrents et des pages de MyBestSim (page Thaïlande, blog).
+- La rédaction de l'article, calée sur le style de MyBestSim.
+- Les quatre illustrations de l'article.
