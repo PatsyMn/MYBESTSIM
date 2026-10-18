@@ -152,7 +152,7 @@ page principale est un lien vers la page du pays.
 
 # Article SEO
 
-Livrable : article-seo-esim-croisiere.html (fichier HTML remis séparément, non publié sur le site)
+**En ligne :** https://patsymn.github.io/MYBESTSIM/seo/article-seo-esim-croisiere.html
 
 ### Démarche
 
