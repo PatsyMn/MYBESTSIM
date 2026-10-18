@@ -168,6 +168,19 @@ Livrable : article-seo-esim-croisiere.html (fichier HTML remis séparément, non
    (« eSIM au port, mode avion en mer »), et des prix réels tirés du jeu de données de la
    partie 1
 
+### Fil d'Ariane et favicon
+
+- **Fil d'Ariane (Accueil › Blog › Internet en croisière).** Il aide le lecteur à se repérer
+  et à remonter vers le blog ou l'accueil, ce qui garde la personne sur le site. Pour le
+  référencement, il crée des liens internes vers des pages importantes. J'ai aussi ajouté
+  les données structurées `BreadcrumbList` : Google peut alors afficher le chemin sous le
+  titre dans les résultats de recherche, à la place d'une adresse brute. Je ne peux pas
+  garantir cet affichage, c'est Google qui décide.
+- **Favicon (la mascotte).** C'est la petite icône de l'onglet du navigateur et des favoris.
+  Elle rend la page reconnaissable parmi plusieurs onglets, donne un aspect plus soigné et
+  rappelle la marque. Elle est intégrée dans le fichier HTML, donc il n'y a rien d'autre à
+  envoyer avec l'article.
+
 ### Limites
 
 - **Le volume de recherche du mot-clé n'a pas été mesuré** avec un outil dédié (Google
