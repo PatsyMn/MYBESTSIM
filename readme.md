@@ -24,6 +24,7 @@ responsable produit : « qu'est-ce qui est une bonne affaire ? ».
 global et le nombre de cartes par fournisseur, mais pas qui est le moins cher.
 Cette statistique classe les 18 fournisseurs (de 24,26 € pour 4S eSIM à 32,10 €
 pour Yesim).
+
 Limite :les catalogues ne sont pas comparables (volumes, durées et
 zones différents), donc un écart d'environ 8 € se lit avec prudence.
 
@@ -33,6 +34,7 @@ trompeur : le prix moyen inclut les 653 illimités, pas la data moyenne
 (on obtiendrait environ 2,02 €/Go). J'ai donc calculé, pour chaque fournisseur,
 le total des prix divisé par le total des Go, sur les forfaits limités
 uniquement. Cette statistique corrige la précédente.
+
 Limite : la durée de validité n'est pas prise en compte (1 Go sur 7 jours compte comme 1 Go sur 30 jours).
 
 **9. Disponibilité par pays.** Elle répond à la question d'un voyageur : « que
@@ -42,6 +44,7 @@ illimitées et prix de la moins chère. Les forfaits limités et illimités sont
 présentés séparément, car un illimité n'a pas de prix au Go.
 
 Limites :
+
 - Europe, Asie, Monde et Amérique du Nord sont des cartes qui couvrent plusieurs
   pays. Elles ont leur propre ligne et ne sont pas ajoutées aux lignes des pays
   (par exemple, les cartes « Europe » ne sont pas comptées dans l'Espagne), car
@@ -59,6 +62,7 @@ Limites :
 L'énoncé parle d'un import quotidien. Voici comment c'est géré.
 
 **Le programme ne dépend pas du contenu des fichiers**
+
 - Aucun nom de fichier n'est écrit dans le code : `Path('dataset').glob('*.csv')`
   lit tous les CSV du dossier. Un 19e fournisseur serait pris en compte sans
   modifier le code.
@@ -66,6 +70,7 @@ L'énoncé parle d'un import quotidien. Voici comment c'est géré.
   (total, moyennes, classements, tableau par pays).
 
 **Les fichiers invalides ne faussent pas les résultats**
+
 - Un fichier avec un prix ou une durée illisible, une ligne trop courte, un fichier
   vide ou un fichier sans produit est **ignoré en entier**, avec un message
   d'avertissement. Les lignes lues avant l'erreur ne sont pas gardées : chaque
@@ -76,8 +81,10 @@ L'énoncé parle d'un import quotidien. Voici comment c'est géré.
 - Les cinq cas sont testés avec les fichiers du dossier `invalid_dataset/`.
 
 **La page est régénérée automatiquement**
+
 Une GitHub Action (`.github/workflows/update-dashboard.yml`) relance le programme
 puis republie la page. Elle se déclenche :
+
 - tous les jours à 6 h UTC ;
 - à chaque `git push` qui modifie `dataset/` ou `src/` ;
 - à la demande, avec le bouton « Run workflow » de l'onglet Actions.
@@ -86,6 +93,7 @@ Le lien du dashboard reste le même, seuls les chiffres changent. L'Action est
 gratuite pour ce usage (quelques secondes d'exécution par jour).
 
 **Hypothèse retenue**
+
 Le dashboard est une page statique régénérée à chaque import, et non un serveur
 qui relit les fichiers à chaque visite. C'est plus simple et plus fiable à
 héberger (aucun serveur à maintenir). Un serveur serait une évolution possible.
@@ -118,23 +126,42 @@ héberger (aucun serveur à maintenir). Un serveur serait une évolution possibl
 
 ## Méthodologie et utilisation de l'IA
 
-J'ai utilisé Claude (Anthropic) comme tuteur et comme assistant de code. Pour
-être précise sur la répartition :
-
-**Ce que j'ai fait moi-même**
-- Exploré les fichiers CSV : colonnes, séparateur, encodage, valeurs vides.
-- Planifié le projet par étapes (lire, calculer, afficher) et choisi l'organisation en fichiers, avec une seule responsabilité par fichier.
-- Écrit la lecture des CSV à partir d'un code de mon précédent projet
-  (`csv.reader`, `try/except`), puis l'ai adaptée à ces données et testée.
-- Pris les décisions de lecture : `None` pour les illimités, `top_up` en texte.
-- Choisi les statistiques bonus et décidé de comment présenter leurs limites.
--  Mis en place le déploiement (GitHub Pages et GitHub Action).
-
 **Ce que l'IA m'a apporté**
+
 - Les valeurs de référence que j'ai utilisées pour vérifier mon résultat, et les fichiers corrompus du dossier `invalid_dataset/`.
 - Une grande partie du code de `stats.py` et de `dashboard.py.
 - Rédaction et correction du README.
 - Réflexion sur l’automatisation : page statique ou dynamique, ce qui se passe quand les CSV changent chaque jour, arbitrages coût et simplicité.
 - Aide au débogage.
 
+# Article SEO
 
+**Livrable :** `docs/seo/article-seo-esim-croisiere.html`
+
+### Démarche
+
+1. **Comprendre ce que cherche le lecteur.** Quelqu'un qui tape ce mot-clé veut savoir si
+   son téléphone marchera en mer et quelle eSIM acheter. L'article répond dès
+   l'introduction : une eSIM fonctionne au port, pas en pleine mer.
+2. **Analyser la concurrence.** J'ai lu les articles de Roamless, Saily, Yesim et Holafly
+   sur ce sujet, ainsi que l'article Caraïbes de MyBestSim. Ils font environ 1 400 à
+   3 000 mots, avec des titres, des tableaux, une FAQ et des liens vers des fournisseurs.
+3. **Reprendre le style de MyBestSim.** J'ai lu la page « Meilleure eSIM Thaïlande 2026 » et
+   le blog, et j'ai calqué le plan sur la page Thaïlande : vouvoiement, emojis dans les titres, conseils par profil, cartes fournisseurs avec codes promo, FAQ de 10 questions, section « À lire aussi », appel à l'action final.
+4. **Apporter ce que les autres n'ont pas.** Une règle simple, répétée dans l'article
+   (« eSIM au port, mode avion en mer »), et des prix réels tirés du jeu de données de la
+   partie 1
+
+### Limites
+
+- **Le volume de recherche du mot-clé n'a pas été mesuré** avec un outil dédié (Google
+  Keyword Planner, Semrush).
+- **Les prix sont ceux de mon jeu de données**, pas ceux du site en direct : ils sont à
+  actualiser avant publication.
+
+**Ce que l'IA m'a apporté**
+
+- Décidé du format (page HTML) et de la longueur, et demandé que l'article ressemble au
+  style existant de MyBestSim (page Thaïlande, blog).
+- Récupéré les informations manquantes sur le site (prix de départ d'Orange Travel) et fourni la mascotte.
+- Relu l'article et validé le contenu.
